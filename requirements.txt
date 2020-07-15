@@ -1,0 +1,6 @@
+starfile==0.12
+dynamotable==0.2
+click==7.1.2
+eulerangles==0.1
+pandas~=1.0.5
+numpy~=1.19.0
