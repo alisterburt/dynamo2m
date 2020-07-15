@@ -16,20 +16,24 @@ Dynamo is a tomography specific software package with many useful tools for subt
 - [Automated tilt-series alignment](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Walkthrough_on_command_line_based_tilt_series_alignment)
 - [PCA based classification and analysis tools](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Walkthrough_on_PCA_through_the_command_line)
 - [Geometric modelling and visualisation tools](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Model) for particle picking and tomogram annotation
-- much much more...
 
-M is an imaging modality
+M is a software package which allows one to perform multi-particle refinements with the aim of correcting for various 
+sample deformations which can occur during imaging, it currently holds the record for high resolution 
+single particle analysis from frame-series and tilt-series data.
+
+The ability to easily combine these software packages is the goal of the scripts provided in this package.
 
 ## Scripts
 - `dynamo2warp` for the conversion of Dynamo metadata to facilitate extraction of particles in Warp
 - `warp2dynamo` for the conversion of Warp STAR files into Dynamo compatible metadata
+- `starfile_rescale` can rescale the metadata in STAR files (necessary to get around bugs in beta versions of M)
 - Conversion to Excel speadsheet (.xlsx)
 
 
 ## Installation
 Installation is available directly from the [Python package index](https://pypi.org/project/dynamo2m/)
 ```
-pip install starfile
+pip install dynamo2m
 ```
 
 
