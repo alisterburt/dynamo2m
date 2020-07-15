@@ -2,3 +2,5 @@
 venv
 setup.py
 setup.cfg
+dist
+MANIFEST
