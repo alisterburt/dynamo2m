@@ -38,3 +38,34 @@ pip install dynamo2m
 
 
 ## Usage
+Each of the scripts can be invoked directly from the command line an interactive command line interface. 
+
+For example
+```
+dynamo2warp
+```
+
+```
+Input Dynamo table file: example.tbl
+Input Dynamo table map file: example.doc
+Output STAR file: test.star
+Done! Converted 'example.tbl' to RELION/Warp compatible STAR file 'test_data.star'
+
+```
+
+Alternatively, options can be passed directly at the command line, this is detailed in the help provided with each script
+
+```
+dynamo2warp --help
+```
+
+```
+Usage: dynamo2warp [OPTIONS]
+
+Options:
+  -i, --input_table_file PATH  [required]
+  -tm, --table_map_file PATH   [required]
+  -o, --output_star_file PATH  [required]
+  --help                       Show this message and exit.
+
+```
