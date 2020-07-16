@@ -41,13 +41,14 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
         relion_heading = 'rlnCoordinate' + axis.upper()
         dynamo_data[axis] = relion_star[relion_heading]
 
-    # Get euler angles and convert to dynamo convention
-    eulers_relion = relion_star[['rlnAngleRot', 'rlnAngleTilt', 'rlnAnglePsi']].to_numpy()
-    eulers_dynamo = euler2euler(eulers_relion, source_convention='relion', target_convention='dynamo')
+    # Get euler angles and convert to dynamo convention (only if eulers present in STAR file)
+    if 'rlnAngleRot' in relion_star.columns:
+        eulers_relion = relion_star[['rlnAngleRot', 'rlnAngleTilt', 'rlnAnglePsi']].to_numpy()
+        eulers_dynamo = euler2euler(eulers_relion, source_convention='relion', target_convention='dynamo')
 
-    dynamo_data['tdrot'] = eulers_dynamo[:, 0]
-    dynamo_data['tilt'] = eulers_dynamo[:, 1]
-    dynamo_data['narot'] = eulers_dynamo[:, 2]
+        dynamo_data['tdrot'] = eulers_dynamo[:, 0]
+        dynamo_data['tilt'] = eulers_dynamo[:, 1]
+        dynamo_data['narot'] = eulers_dynamo[:, 2]
 
     # Add tomogram info
     dynamo_data['tomo_file'] = relion_star['rlnMicrographName']
