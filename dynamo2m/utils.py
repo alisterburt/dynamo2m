@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 
 def sanitise_micrograph_name(micrograph_name: str) -> str:
@@ -44,3 +45,16 @@ def reextract_table_filename(table_file_name: str) -> str:
     :return:
     """
     return table_file_name.replace('.tbl', '.reextract.tbl')
+
+
+def extract_tomostar_from_image_name(filename: str) -> str:
+    """
+    from a given filename, expected to be from the 'rlnImageName' column of a STAR file output by M
+    extract the tomogram name
+    :param filename:
+    :return:
+    """
+    p = Path(filename)
+    tomo_name = p.parts[-2]
+    tomostar = tomo_name + '.tomostar'
+    return tomostar
