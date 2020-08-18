@@ -26,7 +26,9 @@ The ability to easily combine these software packages is the goal of the scripts
 ## Scripts
 - `dynamo2warp` for the conversion of Dynamo metadata to facilitate extraction of particles in Warp
 - `warp2dynamo` for the conversion of Warp STAR files into Dynamo compatible metadata
+- `m2dynamo` for the conversion of M STAR files into Dynamo compatible metadata
 - `starfile_rescale` can rescale the metadata in STAR files (necessary to get around bugs in beta versions of M)
+
 
 
 ## Installation
