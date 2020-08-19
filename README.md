@@ -52,7 +52,7 @@ dynamo2warp
 Input Dynamo table file: example.tbl
 Input Dynamo table map file: example.doc
 Output STAR file: test.star
-Done! Converted 'example.tbl' to RELION/Warp compatible STAR file 'test_data.star'
+Done! Converted 'example.tbl' to RELION/Warp/M compatible STAR file 'test_data.star'
 
 ```
 
