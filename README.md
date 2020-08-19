@@ -1,6 +1,6 @@
 # dynamo2m
-[![PyPI pyversions](https://img.shields.io/pypi/pyversions/dynamo2m.svg)](https://pypi.python.org/pypi/starfile/)
-[![PyPI version](https://badge.fury.io/py/dynamo2m.svg)](https://pypi.python.org/pypi/starfile/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/dynamo2m.svg)](https://pypi.python.org/pypi/dynamo2m/)
+[![PyPI version](https://badge.fury.io/py/dynamo2m.svg)](https://pypi.python.org/pypi/dynamo2m/)
 
 `dynamo2m` is a set of Python scripts to interface the subtomogram averaging software 
 [Dynamo](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Main_Page) 
