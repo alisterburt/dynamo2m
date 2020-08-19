@@ -16,6 +16,7 @@ Dynamo is a tomography specific software package with many useful tools for subt
 - Interactive tools for [initial model generation](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Starters_guide#Initial_model_generation)
 - [Automated tilt-series alignment](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Walkthrough_on_command_line_based_tilt_series_alignment)
 - [PCA based classification and analysis tools](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Walkthrough_on_PCA_through_the_command_line)
+- [Multireference based classification](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Multireference_Analysis)
 - [Geometric modelling and visualisation tools](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Model) for particle picking and tomogram annotation
 
 M is a software package which allows one to perform multi-particle refinements with the aim of correcting for various 
