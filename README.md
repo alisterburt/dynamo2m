@@ -2,7 +2,7 @@
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/dynamo2m.svg)](https://pypi.python.org/pypi/dynamo2m/)
 [![PyPI version](https://badge.fury.io/py/dynamo2m.svg)](https://pypi.python.org/pypi/dynamo2m/)
 
-`dynamo2m` is a set of Python scripts to interface the subtomogram averaging software 
+`dynamo2m` is a small set of tools to interface the subtomogram averaging software 
 [Dynamo](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Main_Page) 
 with the 
 multi particle refinement cryo-EM software [M](http://www.warpem.com/warp/?page_id=1614).
