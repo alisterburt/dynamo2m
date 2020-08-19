@@ -25,7 +25,7 @@ M is a software package which allows one to perform multi-particle refinements w
 sample deformations which can occur during imaging, it currently holds the record for high resolution 
 single particle analysis from frame-series and tilt-series data.
 
-The ability to easily combine these software packages is the goal of the scripts provided in this package.
+The ability to easily combine these software packages, particularly for particle picking using a modelled supporting geometry, is the goal of the scripts provided in this package.
 
 ## Scripts
 - `dynamo2warp` for the conversion of Dynamo metadata to facilitate extraction of particles in Warp
