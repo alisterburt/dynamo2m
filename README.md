@@ -7,6 +7,8 @@
 with the 
 multi particle refinement cryo-EM software [M](http://www.warpem.com/warp/?page_id=1614).
 
+A description of the workflow for working between Warp, Dynamo and M can be found [here](https://wiki.dynamo.biozentrum.unibas.ch/w/index.php/Integration_with_Warp_and_M)
+
 
 ## Motivation
 Dynamo is a tomography specific software package with many useful tools for subtomogram averaging including...
