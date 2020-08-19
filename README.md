@@ -4,8 +4,6 @@
 with the 
 multi particle refinement cryo-EM software [M](http://www.warpem.com/warp/?page_id=1614).
 
-It forms part of the image processing pipeline described in the following [preprint]().
-
 
 ## Motivation
 Dynamo is a tomography specific software package with many useful tools for subtomogram averaging including...
