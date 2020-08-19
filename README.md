@@ -41,7 +41,7 @@ pip install dynamo2m
 
 
 ## Usage
-Each of the scripts can be invoked directly from the command line an interactive command line interface. 
+Each of the scripts can be invoked directly from the command line and each has an interactive command line interface. 
 
 For example
 ```
