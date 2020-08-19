@@ -27,6 +27,13 @@ single particle analysis from frame-series and tilt-series data.
 
 The ability to easily combine these software packages, particularly for particle picking using a modelled supporting geometry, is the goal of the scripts provided in this package.
 
+ <p align="center">    
+     <img src="geom.png"
+          alt="Automatically detected fiducial markers"
+          width=40%
+          height=40%
+          />
+</p>
 ## Scripts
 - `dynamo2warp` for the conversion of Dynamo metadata to facilitate extraction of particles in Warp
 - `warp2dynamo` for the conversion of Warp STAR files into Dynamo compatible metadata
