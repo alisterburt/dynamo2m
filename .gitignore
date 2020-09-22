@@ -1,6 +1,6 @@
 .idea
 venv
-setup.py
 setup.cfg
+build
 dist
 MANIFEST
