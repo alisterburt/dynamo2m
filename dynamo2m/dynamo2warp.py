@@ -36,7 +36,7 @@ def cli(input_table_file, table_map_file, output_star_file):
 
     # extract xyz into dict with relion style headings
     for axis in ('x', 'y', 'z'):
-        heading = f'rlnCoordinate{axis}'
+        heading = f'rlnCoordinate{axis.upper()}'
         shift_axis = f'd{axis}'
         data[heading] = table[axis] + table[shift_axis]
 
