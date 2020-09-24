@@ -20,4 +20,15 @@ setup(
         'Programming Language :: Python :: 3.9',
     ],
     python_requires='>=3.6',
+    install_requires=[
+        'click',
+        'starfile',
+        'dynamotable',
+        'eulerangles'
+    ],
+    entry_points='''
+        [console_scripts]
+        dynamo2warp=dynamo2m.dynamo2warp:cli
+        warp2dynamo=dynamo2m.warp2dynamo:cli
+    ''',
 )
