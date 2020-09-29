@@ -30,5 +30,6 @@ setup(
         [console_scripts]
         dynamo2warp=dynamo2m.dynamo2warp:cli
         warp2dynamo=dynamo2m.warp2dynamo:cli
+        starfile_rescale=dynamo2m.starfile_rescale:cli
     ''',
 )
