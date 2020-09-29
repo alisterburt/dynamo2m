@@ -30,5 +30,6 @@ setup(
         [console_scripts]
         dynamo2warp=dynamo2m.dynamo2warp:cli
         warp2dynamo=dynamo2m.warp2dynamo:cli
+        dynamo2warp_normalised=dynamo2m.dynamo2warp_normalised:cli
     ''',
 )
