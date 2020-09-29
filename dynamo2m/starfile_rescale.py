@@ -31,6 +31,7 @@ def cli(input_star_file, output_star_file, input_apix, output_apix):
 
     # Define columns which we would like to rescale
     columns_to_rescale = ['rlnCoordinateX', 'rlnCoordinateY', 'rlnCoordinateZ',
+                          'rlnOriginX', 'rlnOriginY', 'rlnOriginZ',
                           'wrpCoordinateX', 'wrpCoordinateY', 'wrpCoordinateZ',
                           'wrpCoordinateX1', 'wrpCoordinateY1', 'wrpCoordinateZ1']
 
