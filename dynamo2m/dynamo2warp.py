@@ -41,7 +41,7 @@ def cli(input_table_file, table_map_file, output_star_file):
         data[heading] = table[axis] + table[shift_axis]
 
     # extract and convert eulerangles
-    eulers_dynamo = dynamotable.eulers(table)
+    eulers_dynamo = table[['tdrot', 'tilt', 'narot']].to_numpy()
     eulers_warp = euler2euler(eulers_dynamo, source_convention='dynamo', target_convention='warp')
     data['rlnAngleRot'] = eulers_warp[:, 0]
     data['rlnAngleTilt'] = eulers_warp[:, 1]
