@@ -30,7 +30,6 @@ setup(
         [console_scripts]
         dynamo2warp=dynamo2m.dynamo2warp:cli
         warp2dynamo=dynamo2m.warp2dynamo:cli
-        starfile_rescale=dynamo2m.starfile_rescale:cli
-        dynamo2warp_normalised=dynamo2m.dynamo2warp_normalised:cli
+        relion_star_downgrade=dynamo2m.relion_star_downgrade:cli
     ''',
 )

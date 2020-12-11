@@ -57,7 +57,7 @@ def cli(input_table_file, table_map_file, output_star_file):
     output_star_file = sanitise_m_starfile_name(output_star_file)
 
     # write out STAR file
-    starfile.write(df, output_star_file)
+    starfile.write(df, output_star_file, overwrite=True)
 
     # echo to console
     click.echo(f"Done! Converted '{input_table_file}' to RELION/Warp compatible STAR file '{output_star_file}'")
