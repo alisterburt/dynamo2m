@@ -1,4 +1,4 @@
-starfile>=0.2
+starfile>=0.4
 dynamotable>=0.2
 click>=7.1.2
 eulerangles>=0.1
