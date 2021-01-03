@@ -5,8 +5,8 @@ import pandas as pd
 import starfile
 
 
-# @click.command()
-# @click.option('--star_file', '-s', prompt='Input STAR file')
+@click.command()
+@click.option('--star_file', '-s', prompt='Input STAR file')
 def cli(star_file):
     """Downgrade RELION 3.1 STAR file to RELION 3.0 format for Warp
     """
@@ -51,6 +51,3 @@ def cli(star_file):
     starfile.write(df, output_filename, overwrite=True)
     click.echo(f'Done! Wrote RELION 3.0 format STAR file to {output_filename}')
     return
-
-if __name__ == '__main__':
-    cli('relion3.1.star')

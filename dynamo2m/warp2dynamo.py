@@ -58,17 +58,19 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
 
     # Write table file
     dynamo_table_file = sanitise_dynamo_table_filename(dynamo_table_file)
-    click.echo(f"Writing out Dynamo table file '{dynamo_table_file}' and corresponding table map file with appropriate info...\n")
+    click.echo(
+        f"Writing out Dynamo table file '{dynamo_table_file}' and corresponding table map file with appropriate info...\n")
     dynamotable.write(df, dynamo_table_file)
 
     # Write out dynamo STAR file to avoid reextraction
     dynamo_star_name = dynamo_table_file + '.star'
-    click.echo(f"Writing out Dynamo format STAR file '{dynamo_star_name}' to avoid reextraction...\n")
+    click.echo(
+        f"Writing out Dynamo format STAR file '{dynamo_star_name}' to avoid reextraction...\n")
 
-    tags = [x+1 for x in range(df.shape[0])]
+    tags = [x + 1 for x in range(df.shape[0])]
     particle_files = relion_star['rlnImageName']
-    dynamo_star = {'tag' : tags,
-                    'particleFile' : particle_files }
+    dynamo_star = {'tag': tags,
+                   'particleFile': particle_files}
     dynamo_star = pd.DataFrame.from_dict(dynamo_star)
 
     starfile.write(dynamo_star, dynamo_star_name)
@@ -86,8 +88,10 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
     df['tomo'] = df['tag']
 
     # Write
-    click.echo(f"Writing out table and table map to facilitate reextraction if dynamo STAR file doesn't work...")
-    click.echo(f"General reextraction command: dtcrop <tomogram_table_map.doc> <tableForAllTomograms>  <outputfolder> <sidelength> -asBoxes 1")
+    click.echo(
+        f"Writing out table and table map to facilitate reextraction if dynamo STAR file doesn't work...")
+    click.echo(
+        f"General reextraction command: dtcrop <tomogram_table_map.doc> <tableForAllTomograms>  <outputfolder> <sidelength> -asBoxes 1")
     extraction_command = f"dtcrop {reextraction_table_name.replace('.tbl', '.doc')} {reextraction_table_name}  <outputfolder> {extracted_box_size} -asBoxes 1"
 
     with open('dynamo_reextraction.m', 'w') as f:
@@ -96,6 +100,3 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
 
     click.echo(f"\nDone! Converted Warp output '{warp_star_file}' into Dynamo input files")
     return
-
-
-

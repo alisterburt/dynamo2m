@@ -1,11 +1,3 @@
-### Conversion of dynamo format table files into a STAR file for particle extraction in WARP ###
-# Requires
-#  - dynamotable (depends on pandas)
-#  - starfile (depends on pandas)
-#  - eulerangles (depends on numpy)
-#  - click
-# tested and working against warp v1.0.7
-
 import click
 import dynamotable
 import starfile
@@ -59,10 +51,7 @@ def cli(input_table_file, table_map_file, output_star_file):
     starfile.write(df, output_star_file, overwrite=True)
 
     # echo to console
-    click.echo(f"Done! Converted '{input_table_file}' to RELION/Warp compatible STAR file '{output_star_file}'")
+    click.echo(
+        f"Done! Converted '{input_table_file}' to RELION/Warp compatible STAR file '{output_star_file}'")
 
     return
-
-
-
-
