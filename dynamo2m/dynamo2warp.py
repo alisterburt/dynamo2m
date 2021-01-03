@@ -10,7 +10,7 @@ import click
 import dynamotable
 import starfile
 import pandas as pd
-from eulerangles import euler2euler
+from eulerangles import convert_eulers
 from .utils import sanitise_micrograph_name, sanitise_m_starfile_name
 
 
@@ -42,7 +42,9 @@ def cli(input_table_file, table_map_file, output_star_file):
 
     # extract and convert eulerangles
     eulers_dynamo = table[['tdrot', 'tilt', 'narot']].to_numpy()
-    eulers_warp = euler2euler(eulers_dynamo, source_convention='dynamo', target_convention='warp')
+    eulers_warp = convert_eulers(eulers_dynamo,
+                                 source_meta='dynamo',
+                                 target_meta='warp')
     data['rlnAngleRot'] = eulers_warp[:, 0]
     data['rlnAngleTilt'] = eulers_warp[:, 1]
     data['rlnAnglePsi'] = eulers_warp[:, 2]
@@ -52,9 +54,6 @@ def cli(input_table_file, table_map_file, output_star_file):
 
     # convert dict to dataframe
     df = pd.DataFrame.from_dict(data)
-
-    # Make sure filename is M compatible
-    output_star_file = sanitise_m_starfile_name(output_star_file)
 
     # write out STAR file
     starfile.write(df, output_star_file, overwrite=True)

@@ -58,3 +58,5 @@ def extract_tomostar_from_image_name(filename: str) -> str:
     tomo_name = p.parts[-2]
     tomostar = tomo_name + '.tomostar'
     return tomostar
+
+

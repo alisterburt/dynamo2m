@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import starfile
 import dynamotable
-from eulerangles import euler2euler
+from eulerangles import convert_eulers
 
 from .utils import sanitise_dynamo_table_filename, reextract_table_filename
 
@@ -22,13 +22,11 @@ from .utils import sanitise_dynamo_table_filename, reextract_table_filename
               required=True)
 def cli(warp_star_file, dynamo_table_file, extracted_box_size):
     """
-    CLI for converting a Warp STAR file into a dynamo table file Outputs a few things 1) dynamo table and
-    corresponding table map (.doc) 2) dynamo STAR file as data container (to avoid reextraction) 3) a separate table
-    for reextraction as a dynamo data folder (STAR container didn't work in my hands for alignment projects)
-    :param extracted_box_size:
-    :param warp_star_file:
-    :param dynamo_table_file:
-    :return:
+    CLI for converting a Warp STAR file into a dynamo table file Outputs a few things
+    1) dynamo table and corresponding table map (.doc)
+    2) dynamo STAR file as data container (to avoid reextraction)
+    3) a separate table for reextraction as a dynamo data folder
+    (STAR container didn't work in my hands for alignment projects)
     """
     # Read STAR file
     relion_star = starfile.read(warp_star_file)
@@ -44,7 +42,9 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
     # Get euler angles and convert to dynamo convention (only if eulers present in STAR file)
     if 'rlnAngleRot' in relion_star.columns:
         eulers_relion = relion_star[['rlnAngleRot', 'rlnAngleTilt', 'rlnAnglePsi']].to_numpy()
-        eulers_dynamo = euler2euler(eulers_relion, source_convention='relion', target_convention='dynamo')
+        eulers_dynamo = convert_eulers(eulers_relion,
+                                       source_meta='relion',
+                                       target_meta='dynamo')
 
         dynamo_data['tdrot'] = eulers_dynamo[:, 0]
         dynamo_data['tilt'] = eulers_dynamo[:, 1]
@@ -89,7 +89,9 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
     click.echo(f"Writing out table and table map to facilitate reextraction if dynamo STAR file doesn't work...")
     click.echo(f"General reextraction command: dtcrop <tomogram_table_map.doc> <tableForAllTomograms>  <outputfolder> <sidelength> -asBoxes 1")
     extraction_command = f"dtcrop {reextraction_table_name.replace('.tbl', '.doc')} {reextraction_table_name}  <outputfolder> {extracted_box_size} -asBoxes 1"
-    click.echo(f"Extraction command for your data: {extraction_command}")
+
+    with open('dynamo_reextraction.m', 'w') as f:
+        f.write(f'{extraction_command}\n')
     dynamotable.write(df, reextraction_table_name)
 
     click.echo(f"\nDone! Converted Warp output '{warp_star_file}' into Dynamo input files")
