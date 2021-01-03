@@ -8,21 +8,10 @@ from eulerangles import convert_eulers
 from .utils import sanitise_dynamo_table_filename, reextract_table_filename
 
 
-@click.command()
-@click.option('--input_star_file', '-i', 'warp_star_file',
-              prompt='Input Warp STAR file',
-              type=click.Path(exists=True),
-              required=True)
-@click.option('--output_table_file', '-o', 'dynamo_table_file',
-              type=click.Path(exists=False),
-              prompt='Output dynamo table file')
-@click.option('--extracted_box_size', '-bs', 'extracted_box_size',
-              prompt='Extracted box size (px)',
-              type=int,
-              required=True)
-def cli(warp_star_file, dynamo_table_file, extracted_box_size):
+def warp2dynamo(warp_star_file, output_dynamo_table_file, extracted_box_size):
     """
-    CLI for converting a Warp STAR file into a dynamo table file Outputs a few things
+    Converts a Warp STAR file into a Dynamo table file.
+    Outputs a few things
     1) dynamo table and corresponding table map (.doc)
     2) dynamo STAR file as data container (to avoid reextraction)
     3) a separate table for reextraction as a dynamo data folder
@@ -57,13 +46,13 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
     df = pd.DataFrame.from_dict(dynamo_data)
 
     # Write table file
-    dynamo_table_file = sanitise_dynamo_table_filename(dynamo_table_file)
+    output_dynamo_table_file = sanitise_dynamo_table_filename(output_dynamo_table_file)
     click.echo(
-        f"Writing out Dynamo table file '{dynamo_table_file}' and corresponding table map file with appropriate info...\n")
-    dynamotable.write(df, dynamo_table_file)
+        f"Writing out Dynamo table file '{output_dynamo_table_file}' and corresponding table map file with appropriate info...\n")
+    dynamotable.write(df, output_dynamo_table_file)
 
     # Write out dynamo STAR file to avoid reextraction
-    dynamo_star_name = dynamo_table_file + '.star'
+    dynamo_star_name = output_dynamo_table_file + '.star'
     click.echo(
         f"Writing out Dynamo format STAR file '{dynamo_star_name}' to avoid reextraction...\n")
 
@@ -77,7 +66,7 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
 
     # Write out reextraction table and .doc file (STAR files with mrc volumes didn't work in dynamo 1.1.509 in my hands)
     # Get extraction table name
-    reextraction_table_name = reextract_table_filename(dynamo_table_file)
+    reextraction_table_name = reextract_table_filename(output_dynamo_table_file)
 
     # Change xyz positions to match centers of extracted boxes
     for axis in ('x', 'y', 'z'):
@@ -94,9 +83,26 @@ def cli(warp_star_file, dynamo_table_file, extracted_box_size):
         f"General reextraction command: dtcrop <tomogram_table_map.doc> <tableForAllTomograms>  <outputfolder> <sidelength> -asBoxes 1")
     extraction_command = f"dtcrop {reextraction_table_name.replace('.tbl', '.doc')} {reextraction_table_name}  <outputfolder> {extracted_box_size} -asBoxes 1"
 
-    with open('dynamo_reextraction.m', 'w') as f:
+    reextraction_matlab = output_dynamo_table_file.replace('.tbl', 'reextraction_script.m')
+    with open(reextraction_matlab, 'w') as f:
         f.write(f'{extraction_command}\n')
     dynamotable.write(df, reextraction_table_name)
 
     click.echo(f"\nDone! Converted Warp output '{warp_star_file}' into Dynamo input files")
     return
+
+
+@click.command()
+@click.option('--input_star_file', '-i', 'warp_star_file',
+              prompt='Input Warp STAR file',
+              type=click.Path(exists=True),
+              required=True)
+@click.option('--output_table_file', '-o', 'dynamo_table_file',
+              type=click.Path(exists=False),
+              prompt='Output dynamo table file')
+@click.option('--extracted_box_size', '-bs', 'extracted_box_size',
+              prompt='Extracted box size (px)',
+              type=int,
+              required=True)
+def cli(warp_star_file, dynamo_table_file, extracted_box_size):
+    warp2dynamo(warp_star_file, dynamo_table_file, extracted_box_size)

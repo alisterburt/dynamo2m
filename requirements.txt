@@ -1,6 +1,6 @@
-starfile>=0.4
+starfile>=0.4.4
 dynamotable>=0.2
 click>=7.1.2
 eulerangles>=1.0.0
 pandas>=1.1.2
-numpy>=1.18.0
+numpy>=1.16.5

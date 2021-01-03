@@ -6,20 +6,7 @@ from eulerangles import convert_eulers
 from .utils import sanitise_micrograph_name, sanitise_m_starfile_name
 
 
-@click.command()
-@click.option('--input_table_file', '-i',
-              prompt='Input Dynamo table file',
-              type=click.Path(),
-              required=True)
-@click.option('--table_map_file', '-tm',
-              prompt='Input Dynamo table map file',
-              type=click.Path(),
-              required=True)
-@click.option('--output_star_file', '-o',
-              prompt='Output STAR file',
-              type=click.Path(),
-              required=True)
-def cli(input_table_file, table_map_file, output_star_file):
+def dynamo2warp(input_table_file, table_map_file, output_star_file):
     # Read table file into dataframe
     table = dynamotable.read(input_table_file, table_map_file)
 
@@ -55,3 +42,19 @@ def cli(input_table_file, table_map_file, output_star_file):
         f"Done! Converted '{input_table_file}' to RELION/Warp compatible STAR file '{output_star_file}'")
 
     return
+
+@click.command()
+@click.option('--input_table_file', '-i',
+              prompt='Input Dynamo table file',
+              type=click.Path(),
+              required=True)
+@click.option('--table_map_file', '-tm',
+              prompt='Input Dynamo table map file',
+              type=click.Path(),
+              required=True)
+@click.option('--output_star_file', '-o',
+              prompt='Output STAR file',
+              type=click.Path(),
+              required=True)
+def cli(input_table_file, table_map_file, output_star_file):
+    dynamo2warp(input_table_file, table_map_file, output_star_file)

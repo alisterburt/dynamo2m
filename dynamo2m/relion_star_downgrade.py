@@ -5,9 +5,7 @@ import pandas as pd
 import starfile
 
 
-@click.command()
-@click.option('--star_file', '-s', prompt='Input STAR file')
-def cli(star_file):
+def relion_star_downgrade(star_file):
     """Downgrade RELION 3.1 STAR file to RELION 3.0 format for Warp
     """
     star = starfile.read(star_file)
@@ -51,3 +49,11 @@ def cli(star_file):
     starfile.write(df, output_filename, overwrite=True)
     click.echo(f'Done! Wrote RELION 3.0 format STAR file to {output_filename}')
     return
+
+
+@click.command()
+@click.option('--star_file', '-s', prompt='Input STAR file')
+def cli(star_file):
+    """Downgrade RELION 3.1 STAR file to RELION 3.0 format for Warp
+    """
+    relion_star_downgrade(star_file)
