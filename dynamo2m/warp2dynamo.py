@@ -74,7 +74,7 @@ def warp2dynamo(warp_star_file, output_dynamo_table_file, extracted_box_size):
 
     # Change tomo_file to point to individual particles and make tomo equal to tags
     df['tomo_file'] = relion_star['rlnImageName']
-    df['tomo'] = df['tag']
+    df['tomo'] = dynamo_star['tag']
 
     # Write
     click.echo(
