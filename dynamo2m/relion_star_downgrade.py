@@ -30,7 +30,7 @@ def relion_star_downgrade(star_file):
     shifts_px = shifts_ang / pixel_size
 
     # update XYZ positions
-    xyz_shifted = xyz + shifts_px
+    xyz_shifted = xyz - shifts_px
 
     # Create output DataFrame
     df = pd.DataFrame.from_dict(data_out, orient='columns')
