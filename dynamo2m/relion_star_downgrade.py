@@ -5,7 +5,7 @@ import pandas as pd
 import starfile
 
 
-def relion_star_downgrade(star_file):
+def relion_star_downgrade(star_file, tomostar=False):
     """Downgrade RELION 3.1 STAR file to RELION 3.0 format for Warp
     """
     star = starfile.read(star_file)
@@ -24,7 +24,10 @@ def relion_star_downgrade(star_file):
     pixel_size = data['rlnImagePixelSize'].to_numpy().reshape((-1, 1))
     eulers = data[euler_headings].to_numpy()
     data_out = {}
-    data_out['rlnMicrographName'] = data['rlnMicrographName']
+    if tomostar == True:
+        data_out['rlnMicrographName'] = data['rlnMicrographName'].astype(str) + '.tomostar'
+    else:
+        data_out['rlnMicrographName'] = data['rlnMicrographName']
 
     # Get shifts in pixels (RELION 3.0 style)
     shifts_px = shifts_ang / pixel_size
@@ -52,8 +55,10 @@ def relion_star_downgrade(star_file):
 
 
 @click.command()
-@click.option('--star_file', '-s', prompt='Input STAR file')
-def cli(star_file):
+@click.option('--star_file', '-s', prompt='Input STAR file', show_default=True)
+@click.option('--tag/--no-tag', '-t/-nt', default=False, show_default=True)
+def cli(star_file, tag):
     """Downgrade RELION 3.1 STAR file to RELION 3.0 format for Warp
     """
-    relion_star_downgrade(star_file)
+    relion_star_downgrade(star_file, tag)
+    
