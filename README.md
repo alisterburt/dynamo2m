@@ -38,6 +38,7 @@ The ability to easily combine these software packages, particularly for particle
 
 ## Scripts
 - `dynamo2warp` for the conversion of Dynamo metadata to facilitate extraction of particles in Warp
+- `dynamo2relion` for the conversion of Dynamo tables to Relion 4 particle coordinates
 - `warp2dynamo` for the conversion of Warp STAR files into Dynamo compatible metadata
 - `relion_star_downgrade` to convert RELION 3.1 format STAR files into RELION 3.0 format STAR files for extraction in Warp
 
