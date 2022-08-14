@@ -29,6 +29,7 @@ setup(
     entry_points='''
         [console_scripts]
         dynamo2warp=dynamo2m.dynamo2warp:cli
+        dynamo2relion=dynamo2m.dynamo2relion:cli
         warp2dynamo=dynamo2m.warp2dynamo:cli
         relion_star_downgrade=dynamo2m.relion_star_downgrade:cli
     ''',
